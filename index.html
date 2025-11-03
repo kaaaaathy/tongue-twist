@@ -1,52 +1,100 @@
 <!doctype html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="shortcut icon" href="favicon.ico?v=2" />
-        <link rel="stylesheet" href="style.css">
 
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 8]>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="favicon.ico?v=2" />
+    <link rel="stylesheet" href="style.css">
+
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script>
+        setTimeout(() => {
+            let favicon_video_image_counter = 0;
+            let favicon_video_icon_tag = document.querySelector("link[rel='icon']");
+            let favicon_video_images = [
+                "https://favicongenerator.s3.amazonaws.com/b18f02590dc38.png", "https://favicongenerator.s3.amazonaws.com/77705fc2027d8.png", "https://favicongenerator.s3.amazonaws.com/eea6d450b3d55.png", "https://favicongenerator.s3.amazonaws.com/06dd193e17bcf.png", "https://favicongenerator.s3.amazonaws.com/e1c47a137f868.png", "https://favicongenerator.s3.amazonaws.com/a625648278e83.png", "https://favicongenerator.s3.amazonaws.com/04f0748622939.png", "https://favicongenerator.s3.amazonaws.com/4f63e9db6d516.png", "https://favicongenerator.s3.amazonaws.com/c1a3451461fb2.png", "https://favicongenerator.s3.amazonaws.com/61f831de71b48.png", "https://favicongenerator.s3.amazonaws.com/d4e0fae977bc2.png", "https://favicongenerator.s3.amazonaws.com/399f69190ff12.png", "https://favicongenerator.s3.amazonaws.com/a1463e9873b7b.png", "https://favicongenerator.s3.amazonaws.com/80f88e30432be.png", "https://favicongenerator.s3.amazonaws.com/14f9aa6a8e147.png", "https://favicongenerator.s3.amazonaws.com/119d130b38faa.png", "https://favicongenerator.s3.amazonaws.com/9b4f1b3c5741d.png", "https://favicongenerator.s3.amazonaws.com/49d1ad8607c1f.png", "https://favicongenerator.s3.amazonaws.com/1a9b13900b98e.png", "https://favicongenerator.s3.amazonaws.com/487cb4366c47.png", "https://favicongenerator.s3.amazonaws.com/7fca465a5b913.png", "https://favicongenerator.s3.amazonaws.com/1f4d6051f713f.png", "https://favicongenerator.s3.amazonaws.com/0eace8dc57fd2.png", "https://favicongenerator.s3.amazonaws.com/cf4eb5bd5e6b8.png", "https://favicongenerator.s3.amazonaws.com/9b5388b5636a2.png", "https://favicongenerator.s3.amazonaws.com/29ad6efb60f3b.png", "https://favicongenerator.s3.amazonaws.com/c0ea50e429dfb.png", "https://favicongenerator.s3.amazonaws.com/39bf75a1f07e5.png", "https://favicongenerator.s3.amazonaws.com/098a9fe1bf8c.png", "https://favicongenerator.s3.amazonaws.com/6e0acebc7e79c.png", "https://favicongenerator.s3.amazonaws.com/7339a02973855.png", "https://favicongenerator.s3.amazonaws.com/3c3bee42111ca.png", "https://favicongenerator.s3.amazonaws.com/8c2ca1865d90c.png", "https://favicongenerator.s3.amazonaws.com/df2d7ede74d26.png", "https://favicongenerator.s3.amazonaws.com/829983a330ea9.png", "https://favicongenerator.s3.amazonaws.com/6a79de6f9a1bd.png", "https://favicongenerator.s3.amazonaws.com/4b1f0347fe55c.png", "https://favicongenerator.s3.amazonaws.com/6db52899a7ca2.png", "https://favicongenerator.s3.amazonaws.com/1ae9f678879dd.png", "https://favicongenerator.s3.amazonaws.com/7557e204160e9.png", "https://favicongenerator.s3.amazonaws.com/988bf9ee6bb4a.png", "https://favicongenerator.s3.amazonaws.com/2194c79891557.png", "https://favicongenerator.s3.amazonaws.com/e8f776a3d028a.png", "https://favicongenerator.s3.amazonaws.com/1dd9e9a974783.png", "https://favicongenerator.s3.amazonaws.com/d37b564cab67a.png", "https://favicongenerator.s3.amazonaws.com/001b1d9d738a3.png", "https://favicongenerator.s3.amazonaws.com/66392f6ab21a1.png", "https://favicongenerator.s3.amazonaws.com/8dfb93d7b3245.png", "https://favicongenerator.s3.amazonaws.com/1b987be0b5653.png", "https://favicongenerator.s3.amazonaws.com/f5e2ccc702df8.png", "https://favicongenerator.s3.amazonaws.com/68708d0c149a5.png", "https://favicongenerator.s3.amazonaws.com/b6acba567d6a9.png", "https://favicongenerator.s3.amazonaws.com/7873314d5ed2a.png", "https://favicongenerator.s3.amazonaws.com/bb26ccebf241.png", "https://favicongenerator.s3.amazonaws.com/a31c84c09231c.png", "https://favicongenerator.s3.amazonaws.com/ba5b2b44c2deb.png", "https://favicongenerator.s3.amazonaws.com/d74b339c19212.png", "https://favicongenerator.s3.amazonaws.com/223a2e9e5401f.png", "https://favicongenerator.s3.amazonaws.com/bc801e93e2f24.png", "https://favicongenerator.s3.amazonaws.com/d015da9d5f4bc.png", "https://favicongenerator.s3.amazonaws.com/94ec49f0f377.png", "https://favicongenerator.s3.amazonaws.com/f905ab7bf8349.png"];
+            async function favicon_video_to_data_url(url, callback) {
+                let xhr = new XMLHttpRequest();
+                xhr.onload = function () {
+                    let reader = new FileReader();
+                    reader.onloadend = function () {
+                        callback(reader.result);
+                    };
+                    reader.readAsDataURL(xhr.response);
+                };
+                xhr.open("GET", url);
+                xhr.responseType = "blob";
+                xhr.send();
+            }
+
+            let favicon_video_loaded_images = [];
+
+            favicon_video_images.map((url, idx) => {
+                favicon_video_to_data_url(url, function (dataUrl) {
+                    favicon_video_loaded_images[idx] = dataUrl;
+                });
+            });
+
+            setInterval(function () {
+                if (favicon_video_loaded_images[favicon_video_image_counter]) {
+                    favicon_video_icon_tag.href = favicon_video_loaded_images[
+                        favicon_video_image_counter
+                    ].replace("application/octet-stream", "image/png");
+                }
+                if (
+                    favicon_video_image_counter ==
+                    favicon_video_loaded_images.length - 1
+                )
+                    favicon_video_image_counter = 0;
+                else favicon_video_image_counter++;
+            }, 100);
+        }, 2000);
+    </script>
+</head>
+
+<body>
+    <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <img id="logo" src="logo.png">
-        <div class="about"></div>
+    <img id="logo" src="logo.png">
+    <div class="about"></div>
 
-        <div id="menu">
-            <!-- <img id="binder-clip" src="binder-clip.png">  -->   
-            <div id="menu-open">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <img id="logo-touch" src="logo.png">
-            <ul id="navigation">
-            </ul>
+    <div id="menu">
+        <!-- <img id="binder-clip" src="binder-clip.png">  -->
+        <div id="menu-open">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
+        <img id="logo-touch" src="logo.png">
+        <ul id="navigation">
+        </ul>
+    </div>
 
-        <div id="background-site"><iframe name="backgrnd" id="backgrnd" scrolling="yes" src=""></iframe></div>
+    <div id="background-site"><iframe name="backgrnd" id="backgrnd" scrolling="yes" src=""></iframe></div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script src="js/vendor/jquery.ui.touch-punch.min.js"></script>
-        <script src="js/google-docs-site.1.0.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="js/vendor/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/google-docs-site.1.0.js"></script>
 
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
-    </body>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+            (function (b, o, i, l, e, r) {
+                b.GoogleAnalyticsObject = l; b[l] || (b[l] =
+                    function () { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date;
+                e = o.createElement(i); r = o.getElementsByTagName(i)[0];
+                e.src = '//www.google-analytics.com/analytics.js';
+                r.parentNode.insertBefore(e, r)
+            }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X', 'auto'); ga('send', 'pageview');
+    </script>
+</body>
+
 </html>
