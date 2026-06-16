@@ -59,7 +59,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const speed = 0.015; // pixels per millisecond, very slow
             let direction = 1;
-            let paused = false;
+            let paused = true;
             let lastTime = performance.now();
 
             function step(now) {
@@ -81,7 +81,7 @@
                 requestAnimationFrame(step);
             }
 
-            document.body.addEventListener('click', () => {
+            document.addEventListener('click', () => {
                 paused = !paused;
                 if (!paused) {
                     lastTime = performance.now();
