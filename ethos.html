@@ -103,12 +103,25 @@
                 raf(step);
             }
 
-            document.addEventListener('click', () => {
+            function togglePause(event) {
+                if (event instanceof PointerEvent) {
+                    if (event.pointerType === 'mouse' && event.button !== 0) {
+                        return;
+                    }
+                }
+
                 paused = !paused;
                 if (!paused) {
                     lastTime = performance.now();
                 }
-            });
+            }
+
+            if (window.PointerEvent) {
+                document.addEventListener('pointerdown', togglePause);
+            } else {
+                document.addEventListener('click', togglePause);
+                document.addEventListener('touchstart', togglePause, { passive: true });
+            }
 
             raf(step);
         });
