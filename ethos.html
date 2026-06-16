@@ -98,12 +98,15 @@
                     } else if (clamped <= 0 && direction < 0) {
                         direction = 1;
                     }
+                    console.log(lastTime);
+
                 }
 
                 raf(step);
             }
 
             function togglePause(event) {
+                console.log('paused');
                 if (event instanceof PointerEvent) {
                     if (event.pointerType === 'mouse' && event.button !== 0) {
                         return;
