@@ -45,83 +45,80 @@
 <body>
     <img src="ethos collage.jpg">
     <div id="worm">
-        <!-- <img style="width:15px"
-            src="https://web.archive.org/web/20091027035712im_/http://uk.geocities.com/tangent_tgt/Images_JPW/BlueWormSmallSlow.gif"> -->
         <span> [...click the subsoil to start/stop burrowing...]</span>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const speed = 0.015; // pixels per millisecond, very slow
-            let direction = 1;
-            let paused = true;
-            let lastTime = performance.now();
+        const speed = 0.015; // pixels per millisecond, very slow
+        let direction = 1;
+        let paused = true;
+        let lastTime = performance.now();
 
-            const scroller = document.scrollingElement || document.documentElement || document.body;
-            const raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || function (cb) {
-                return window.setTimeout(() => cb(performance.now()), 16);
-            };
+        const scroller = document.scrollingElement || document.documentElement || document.body;
+        const raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || function (cb) {
+            return window.setTimeout(() => cb(performance.now()), 16);
+        };
 
-            function getScrollY() {
-                return window.pageYOffset !== undefined ? window.pageYOffset : scroller.scrollTop;
-            }
+        function getScrollY() {
+            return window.pageYOffset !== undefined ? window.pageYOffset : scroller.scrollTop;
+        }
 
-            function getMaxScroll() {
-                const height = Math.max(
-                    scroller.scrollHeight,
-                    document.documentElement.scrollHeight,
-                    document.body.scrollHeight
-                );
-                return height - (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight);
-            }
+        function getMaxScroll() {
+            const height = Math.max(
+                scroller.scrollHeight,
+                document.documentElement.scrollHeight,
+                document.body.scrollHeight
+            );
+            return height - (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight);
+        }
 
-            function step(now) {
-                const delta = now - lastTime;
-                lastTime = now;
+        function step(now) {
+            const delta = now - lastTime;
+            lastTime = now;
 
-                if (!paused) {
-                    const amount = speed * delta * direction;
-                    const current = getScrollY();
-                    const next = current + amount;
-                    const maxScroll = getMaxScroll();
-                    const clamped = Math.min(Math.max(next, 0), maxScroll);
+            if (!paused) {
+                const amount = speed * delta * direction;
+                const current = getScrollY();
+                const next = current + amount;
+                const maxScroll = getMaxScroll();
+                const clamped = Math.min(Math.max(next, 0), maxScroll);
 
-                    window.scrollTo(0, clamped);
+                window.scrollTo(0, clamped);
 
-                    if (clamped >= maxScroll && direction > 0) {
-                        direction = -1;
-                    } else if (clamped <= 0 && direction < 0) {
-                        direction = 1;
-                    }
-                    console.log(lastTime);
-
+                if (clamped >= maxScroll && direction > 0) {
+                    direction = -1;
+                } else if (clamped <= 0 && direction < 0) {
+                    direction = 1;
                 }
+                console.log(lastTime);
 
-                raf(step);
-            }
-
-            function togglePause(event) {
-                console.log('paused');
-                if (event instanceof PointerEvent) {
-                    if (event.pointerType === 'mouse' && event.button !== 0) {
-                        return;
-                    }
-                }
-
-                paused = !paused;
-                if (!paused) {
-                    lastTime = performance.now();
-                }
-            }
-
-            if (window.PointerEvent) {
-                document.addEventListener('pointerdown', togglePause);
-            } else {
-                document.addEventListener('click', togglePause);
-                document.addEventListener('touchstart', togglePause, { passive: true });
             }
 
             raf(step);
-        });
+        }
+
+        function togglePause(event) {
+            console.log('paused');
+            if (event instanceof PointerEvent) {
+                if (event.pointerType === 'mouse' && event.button !== 0) {
+                    return;
+                }
+            }
+
+            paused = !paused;
+            if (!paused) {
+                lastTime = performance.now();
+            }
+        }
+
+        if (window.PointerEvent) {
+            document.addEventListener('pointerdown', togglePause);
+        } else {
+            document.addEventListener('click', togglePause);
+            document.addEventListener('touchstart', togglePause, { passive: true });
+        }
+
+        raf(step);
+
     </script>
 </body>
 
