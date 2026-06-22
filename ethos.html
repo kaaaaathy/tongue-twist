@@ -22,64 +22,66 @@
             height: 100%;
         }
 
-        img {
+        /* img {
             width: 100%;
+        } */
+        #soil {
+
+            top: 0px;
+            width: 100%;
+            /* transform: translateY(0%); */
+
         }
 
-        #worm {
+        #caption {
             position: fixed;
             top: 10px;
             left: 10px;
 
         }
 
+        .burrow {
+            animation: burrow 500s linear infinite forwards;
+        }
+
+
+        @keyframes burrow {
+            0% {
+                transform: translateY(0%);
+
+            }
+
+            50% {
+                transform: translateY(-90%);
+            }
+
+            100% {
+                transform: translateY(0%);
+
+            }
+        }
+
         span {
             font-size: 12px;
             font-family: 'inconsolata', monospace;
-            color: white;
-            background-color: black;
+            color: black;
+            background-color: pink;
         }
     </style>
 </head>
 
 <body>
-    <img src="ethos collage.jpg">
-    <div id="worm">
+    <!-- <img id="soil" src="ethos collage.jpg"> -->
+    <img id="soil" src="ethos collage.jpg">
+    <div id="caption">
         <span> [...click the subsoil to start/stop burrowing...]</span>
     </div>
     <script>
-        const speed = 0.015; // pixels per millisecond, very slow
-        let direction = 1;
-        let paused = true;
-        let lastTime = performance.now();
-
-        function step(now) {
-            const delta = now - lastTime;
-            lastTime = now;
-
-            if (!paused) {
-                const amount = speed * delta * direction;
-                window.scrollBy(0, amount);
-
-                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                if (window.scrollY >= maxScroll && direction > 0) {
-                    direction = -1;
-                } else if (window.scrollY <= 0 && direction < 0) {
-                    direction = 1;
-                }
-            }
-
-            requestAnimationFrame(step);
-        }
-
+        let soil = document.getElementById('soil')
         document.body.addEventListener('click', () => {
-            paused = !paused;
-            if (!paused) {
-                lastTime = performance.now();
-            }
+            soil.classList.toggle('burrow');
         });
 
-        requestAnimationFrame(step);
     </script>
 </body>
 
